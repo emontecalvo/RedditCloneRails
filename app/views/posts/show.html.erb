@@ -1,0 +1,8 @@
+<h1><%= @post.title %></h1>
+
+<% if current_user == @post.author %>
+  <%= link_to "Edit Post", edit_post_url %>
+<% end %>
+<br>
+
+<%= link_to "Back to Sub", sub_url() %>

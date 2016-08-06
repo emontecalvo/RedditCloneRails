@@ -1,0 +1,23 @@
+<h1>Create Post</h1>
+<% method = @post.persisted? ? :PATCH : :POST %>
+<form action="<%= posts_url %>" method = "<%= method %>" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Title</label>
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  <br>
+  <label>URL</label>
+    <input type="text" name="post[url]" value="<%= @post.url %>">
+  <br>
+  <label>Content</label>
+    <textarea cols="20" rows="20" name="post[content]">Type Content Here</textarea>
+  <br>
+
+<% Sub.all.each do |sub| %>
+  <% checked = @post.sub_id == sub.id ? checked : nil %>
+  <ul>
+    <li><input type="radio" name="post[sub_id]" value="<%= sub.id %>" <%= checked %>/> <%= sub.title %></li>
+  </ul>
+<% end %>
+  <input type="submit">
+
+</form>
