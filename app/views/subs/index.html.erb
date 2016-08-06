@@ -3,6 +3,9 @@
 <% @subs.each do |sub| %>
   <ul>
     <li><%= link_to sub.title, sub_url(sub.id) %></li>
+    <ul>
+      <li><%= sub.description %></li>
+    </ul>
   </ul>
 <% end %>
 
